@@ -54,6 +54,7 @@ describe("evaluation", function () {
   addTest("'abc' === 'xyz' && 1 === 1", "LogicalExpression", false);
   addTest("'abc' === 'xyz' && 1 === 10", "LogicalExpression", false);
   addTest("'abc' === 'abc' || 1 === 1", "LogicalExpression", true);
+  addTest("1k === 1000 ", "LogicalExpression", true);
   addTest("'abc' === 'abc' || 1 === 10", "LogicalExpression", true);
   addTest("'abc' === 'xyz' || 1 === 1", "LogicalExpression", true);
   addTest("'abc' === 'xyz' || 1 === 10", "LogicalExpression", false);

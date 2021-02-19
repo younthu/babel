@@ -1176,12 +1176,16 @@ export default class Tokenizer extends ParserErrors {
       isDecimal = true;
     }
 
+    if (next === charCodes.lowercaseK) {
+      ++this.state.pos;
+    }
+
     if (isIdentifierStart(this.input.codePointAt(this.state.pos))) {
       throw this.raise(this.state.pos, Errors.NumberIdentifier);
     }
 
     // remove "_" for numeric literal separator, and trailing `m` or `n`
-    const str = this.input.slice(start, this.state.pos).replace(/[_mn]/g, "");
+    const str = this.input.slice(start, this.state.pos).replace(/[_mn]/g, "").replace(/[_k]/, '000');
 
     if (isBigInt) {
       this.finishToken(tt.bigint, str);
